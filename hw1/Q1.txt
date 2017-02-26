@@ -1,0 +1,78 @@
+Q1)
+a) 
+function Euler(m,c,t0,v0,tn,n,g)
+% print headings and initial conditions
+fprintf(’values of t approximations v(t)\n’)
+fprintf(’%8.3f’,t0),fprintf(’%19.4f\n’,v0)
+% compute step size h
+h=(tn-t0)/n;
+% set t,v to the initial values
+t=t0;
+v=v0;
+% compute v(t) over n time steps using Euler’s method
+for i=1:n
+v=v+(g-c/m*v)*h;
+t=t+h;
+fprintf(’%8.3f’,t),fprintf(’%19.4f\n’,v)
+end
+
+b)
+>> Euler (70.5, 12.5, 0, 0, 12, 15, 9.81)
+values of t approximations v(t)
+   0.000             0.0000
+   0.800             7.8480
+   1.600            14.5828
+   2.400            20.3623
+   3.200            25.3221
+   4.000            29.5783
+   4.800            33.2308
+   5.600            36.3652
+   6.400            39.0550
+   7.200            41.3633
+   8.000            43.3442
+   8.800            45.0440
+   9.600            46.5028
+  10.400            47.7547
+  11.200            48.8290
+  12.000            49.7509
+
+c)
+>> Euler (70.5, 12.5, 0, 0, 12, 15, 3.71)
+values of t approximations v(t)
+   0.000             0.0000
+   0.800             2.9680
+   1.600             5.5150
+   2.400             7.7007
+   3.200             9.5764
+   4.000            11.1861
+   4.800            12.5674
+   5.600            13.7528
+   6.400            14.7700
+   7.200            15.6430
+   8.000            16.3921
+   8.800            17.0350
+   9.600            17.5867
+  10.400            18.0601
+  11.200            18.4664
+  12.000            18.8151
+
+d)
+
+Using Euler method 
+V(12) = 49.7509
+
+Using exact method
+v(12) =  ((9.81*70.5)/12.5)*(1-exp(-12.5*12/70.5))
+
+ans =
+
+   48.7379
+
+|RE| = |1-p*/p|
+
+>> abs(1-(48.7379/49.7509))
+
+ans =
+
+    0.0204 = |Relative Error|
+

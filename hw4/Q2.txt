@@ -1,0 +1,108 @@
+>> A = [1,1,0,0; -1,1,1,1; 1,1,-2,2; -1 1 3, 3]
+
+A =
+
+     1     1     0     0
+    -1     1     1     1
+     1     1    -2     2
+    -1     1     3     3
+
+
+
+
+
+
+
+>> A\[2;0;2/3;0]
+
+ans =
+
+    1.0000 = a
+    1.0000 = b
+    0.3333 = c
+   -0.3333 = d
+
+
+Q3)
+a)
+
+function trap(a, b, maxiter, tol )
+m = 1;
+x = linspace( a, b, m+1 );
+y = f(x);
+approx = trapz( x, y );
+disp(' m integral approximation');
+fprintf(' %5.0f %16.10f \n ', m, approx);
+for i = 1 : maxiter
+m = 2*m;
+oldapprox = approx;
+x = linspace ( a , b , m+1 ) ;
+y = f(x);
+approx = trapz(x, y);
+fprintf(' %5.0f %16.10f \n ', m, approx);
+if abs( 1 - oldapprox/approx ) < tol
+return
+end
+end
+fprintf('Did not converge in %g iterations\n', maxiter)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b)
+
+function y = f(x)
+y = x.*cos(1./x);
+end
+
+>> trap(0.1,3,20,1e-5)
+ m integral approximation
+     1     3.9888973448 
+      2     3.7902074408 
+      4     3.5976493493 
+      8     3.4808457876 
+     16     3.4678411685 
+     32     3.4856113710 
+     64     3.4877924488 
+    128     3.4870325249 
+    256     3.4867926880 
+    512     3.4867333190 
+   1024     3.4867185769
+
+
+function y = f(x)
+y = sin(sqrt(x+1)+1) .* exp(3*x);
+end
+
+>> trap(-1,1,20,1e-5)
+ m integral approximation
+     1    13.3970553517 
+      2     7.6078251027 
+      4     5.6929741681 
+      8     5.1698664471 
+     16     5.0360666322 
+     32     5.0024583324 
+     64     4.9940594943 
+    128     4.9919647293 
+    256     4.9914430366 
+    512     4.9913133379 
+   1024     4.9912811709 
+ 
